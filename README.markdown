@@ -43,6 +43,8 @@ will give you
 
     {success: true}
 
+where as
+
     /your/route.xml
 
 will give you
