@@ -26,14 +26,31 @@ Allows to publish various formats in a very easy way. All you need is an array.
         );
     }
 
-### Define the supported formats in your routing file
+### Add the available format processors to your config.yml
 
+    // app/config/config.yml
+    simpleoutput.config:
+        json: Equinoxe\SimpleOutputBundle\Service\JsonProcessor
+        xml: Equinoxe\SimpleOutputBundle\Service\XmlProcessor
+
+Processors for other formats can be plugged in at this position as well. Feel free to contribute.
+
+### Define the designated formats in your routing file
+
+    // src/YourCompany/YourBundle/Resources/config/routing.yml
     your_route:
         pattern:  /your/route.{_format}
         defaults: { _controller: YourBundle:Controller:action, _format: json }
         requirements: { _format: (xml|json) }
 
 ### Use it in your controller.
+
+#### Direct, using the SimpleOutput-Service
+
+    $simpleOutput = $this->get('equinoxe.simpleoutput');
+    return $this->createResponse($simpleOutput->convert($response, $_format));
+
+#### Through a supplied view
 
     public function someAction($_format)
     {
