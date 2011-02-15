@@ -6,6 +6,14 @@ Allows to publish various formats in a very easy way. All you need is an array.
 
     git submodule add git://github.com/equinoxe/SimpleOutputBundle.git src/Equinoxe/SimpleOutputBundle
 
+### Add the Equinoxe namespace to your autoload.php
+
+    // app/autoload.php
+    $loader->registerNamespaces(array(
+        'Equinoxe' => __DIR__ . '/../src',
+        // your other namespaces
+    );
+
 ### Add SimpleOutputBundle to your application kernel
 
     // app/AppKernel.php
