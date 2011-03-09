@@ -48,7 +48,7 @@ Processors for other formats can be plugged in at this position as well. Feel fr
 #### Direct, using the SimpleOutput-Service
 
     $simpleOutput = $this->get('equinoxe.simpleoutput');
-    return $this->createResponse($simpleOutput->convert($response, $_format));
+    return new Response($simpleOutput->convert($response, $_format));
 
 #### Through a supplied view
 
