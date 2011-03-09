@@ -11,10 +11,10 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class SimpleOutputExtension extends Extension
 {
-    public function configLoad($config, ContainerBuilder $container)
+    public function load(array $config, ContainerBuilder $container)
     {
         foreach($config[0] as $format => $class) {
-            $container->register('equinoxe.simpleoutput.processor.' . $format, $class);
+            $container->register('equinoxe.simple_output.processor.' . $format, $class);
         }
 
         //$loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -24,7 +24,7 @@ class SimpleOutputExtension extends Extension
                 'container' => new Reference('service_container', ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE, false)
             )
         );
-        $container->setDefinition('equinoxe.simpleoutput', $serviceDefinition);
+        $container->setDefinition('equinoxe.simple_output', $serviceDefinition);
     }
 
     public function getXsdValidationBasePath()
@@ -39,6 +39,6 @@ class SimpleOutputExtension extends Extension
 
     public function getAlias()
     {
-        return 'simpleoutput';
+        return 'simple_output';
     }
 }
